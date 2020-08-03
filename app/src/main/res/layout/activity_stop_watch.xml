@@ -37,7 +37,7 @@
             android:layout_height="300dp"
             android:layout_margin="10dp"
             android:layout_gravity="center"
-            app:lottie_autoPlay="true"
+            app:lottie_autoPlay="false"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/timer_old_loop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,23 +72,12 @@
             android:id="@+id/buttonStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:fontFamily="@font/m_medium"
-            android:text="Stop"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timerProgramCountdown" />
-
-        <Button
-            android:id="@+id/buttonReset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/m_medium"
-            android:text="Reset"
+            android:text="Stop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
