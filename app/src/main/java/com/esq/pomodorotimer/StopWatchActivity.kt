@@ -1,13 +1,11 @@
 package com.esq.pomodorotimer
 
-import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
@@ -16,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_stop_watch.*
 
 class StopWatchActivity : AppCompatActivity() {
     lateinit var bind: ActivityStopWatchBinding
+    private var stopSpeed = 0F
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
@@ -24,9 +23,8 @@ class StopWatchActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.setting -> {
-                Toast.makeText(this, "Rate", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show()
             }
-
         }
         return super.onOptionsItemSelected(item)
     }
@@ -35,19 +33,17 @@ class StopWatchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = DataBindingUtil.setContentView(this, R.layout.activity_stop_watch)
-        timerProgramCountdown.base = 25L
-        timerProgramCountdown.setCountDown(true)
+        setSupportActionBar(toolbar)
+        val initialSpeed = animation_view.speed
         bind.buttonStart.setOnClickListener {
             bind.timerProgramCountdown.base = SystemClock.elapsedRealtime()
             bind.timerProgramCountdown.start()
-            buttonStart.visibility = View.GONE
-            buttonStop.visibility = View.VISIBLE
+            animation_view.playAnimation()
+            animation_view.speed = initialSpeed
         }
         bind.buttonStop.setOnClickListener {
-            buttonStart.visibility = View.VISIBLE
-            buttonStop.visibility = View.GONE
             bind.timerProgramCountdown.stop()
+            animation_view.speed = stopSpeed
         }
-        bind.buttonReset.setOnClickListener { bind.timerProgramCountdown.stop() }
     }
 }
