@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:flipTimer="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,6 +12,7 @@
         android:layout_height="match_parent"
         android:background="#273469"
         tools:context=".StopWatchActivity">
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="0dp"
@@ -31,53 +31,68 @@
                 app:popupTheme="@style/Widget.MaterialComponents.PopupMenu.Overflow" />
 
         </com.google.android.material.appbar.AppBarLayout>
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_view"
             android:layout_width="wrap_content"
             android:layout_height="300dp"
-            android:layout_margin="10dp"
             android:layout_gravity="center"
-            app:lottie_autoPlay="false"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/timer_old_loop"
+            android:layout_margin="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBarLayout"/>
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/timer_old_loop" />
 
-        <Chronometer
-            android:id="@+id/timerProgramCountdown"
+        <TextView
+            android:id="@+id/timerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:textSize="32dp"
+            android:text="0:00:00"
             android:textColor="#FFF"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/animation_view"
-            />
+            app:layout_constraintTop_toBottomOf="@id/animation_view" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_margin="16dp"
             android:fontFamily="@font/m_medium"
+            android:shadowColor="@android:color/darker_gray"
             android:text="Start"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="4dp"
+            app:elevation="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timerProgramCountdown" />
+            app:layout_constraintTop_toBottomOf="@+id/timerTextView"
+            app:rippleColor="@android:color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
             android:fontFamily="@font/m_medium"
+            android:shadowColor="@android:color/darker_gray"
             android:text="Stop"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="4dp"
+            app:elevation="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
+            app:layout_constraintTop_toBottomOf="@id/buttonStart"
+            app:rippleColor="@android:color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
